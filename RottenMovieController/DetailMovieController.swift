@@ -20,7 +20,9 @@ class DetailMovieController: UIViewController {
     var rottenRating:String = ""
     var rating:String = ""
     var thumbnailURL:String = ""
-    var animate = false;
+    var animate = false
+    var previousHeight:CGFloat = 0.0
+    var previousSize:CGFloat = 0.0
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleYearLabel: UILabel!
@@ -98,11 +100,13 @@ class DetailMovieController: UIViewController {
             
             UIView.animateWithDuration(0.3, delay: 0.1, options: .CurveEaseOut, animations: {
                 var contentFrame = self.containerView.frame
-                contentFrame.origin.y -= contentFrame.size.height
+                self.previousHeight = contentFrame.origin.y
+                self.previousSize = contentFrame.size.height
+                contentFrame.origin.y = self.view.frame.origin.y + 64
                 var synopsisFrame = self.synopsisLabel.frame
                 synopsisFrame.size.height += contentFrame.size.height
                 self.synopsisLabel.frame = synopsisFrame
-                contentFrame.size.height *= 2
+                contentFrame.size.height = self.view.frame.size.height - 64
                
                 self.containerView.frame = contentFrame
                 
@@ -116,11 +120,12 @@ class DetailMovieController: UIViewController {
             
             UIView.animateWithDuration(0.3, delay: 0.1, options: .CurveEaseOut, animations: {
                 var contentFrame = self.containerView.frame
-                contentFrame.origin.y += contentFrame.size.height/2
+                contentFrame.origin.y = self.previousHeight
+                contentFrame.size.height = self.previousSize
                 var synopsisFrame = self.synopsisLabel.frame
                 synopsisFrame.size.height -= contentFrame.size.height/2
                 self.synopsisLabel.frame = synopsisFrame
-                contentFrame.size.height /= 2
+                
                 self.containerView.frame = contentFrame
                
                 
