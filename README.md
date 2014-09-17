@@ -6,7 +6,7 @@ This is the code for the Week 1 Project: Rotten Tomatoes for iOS CodePath
 
 I spent about 11 hours implementing all the required features and some of the optionals
 
-## Features (required and optional)
+## Features Implemented(required and optional)
 
 * User can view a list of movies from Rotten Tomatoes. Poster images must be loading asynchronously.
 * User can view movie details by tapping on a cell
@@ -16,7 +16,7 @@ I spent about 11 hours implementing all the required features and some of the op
 * All images fade in (optional)
 * For the large poster, load the low-res image first, switch to high-res when complete (optional)
 * Customize the navigation bar. (optional)
-* The app was only tested on iphone 4 and iphone 5. The table sizing is not looking correct on iphone 6. Need to use auto layout
+* The app was developed using iphone 5. The sizing for iphone 4 and iphone 6 is a little off. Need to use auto layout
 
 ## Installation
 The pods directory was also checked in so theoretically should just need to load RottenMovieController.xcworkspace

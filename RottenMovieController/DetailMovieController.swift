@@ -45,6 +45,8 @@ class DetailMovieController: UIViewController {
             
             self.thumbnailView.hidden = true
             self.posterView.image = image;
+         
+           
             
         }
         
@@ -65,6 +67,11 @@ class DetailMovieController: UIViewController {
             (request : NSURLRequest!, response : NSHTTPURLResponse!, image : UIImage!) -> Void in
            
             self.thumbnailView.image = image
+            self.thumbnailView.alpha = 0.0;
+            self.thumbnailView.image = image;
+            UIView.animateWithDuration(0.7, animations: { () -> Void in
+                self.thumbnailView.alpha = 1.0
+            })
             self.posterView.setImageWithURLRequest(largeRequest, placeholderImage: nil, success: largeImageRequestSuccess, failure: imageRequestFailure)
             
         

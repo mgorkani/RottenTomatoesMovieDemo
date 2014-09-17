@@ -107,8 +107,7 @@ class MoviesViewController: UITableViewController {
                 let errorString = error.localizedDescription
                 
                 CSNotificationView.showInViewController(self, style: CSNotificationViewStyleError, message: errorString)
-                
-                
+        
                 
             }
 
@@ -129,9 +128,7 @@ class MoviesViewController: UITableViewController {
         }
         
         cell.thumbnailView.setImageWithURLRequest(request, placeholderImage: nil, success: imageRequestSuccess, failure: imageRequestFailure)
-        
-        
-       
+ 
         return cell;
 
     }
