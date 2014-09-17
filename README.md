@@ -16,7 +16,7 @@ I spent about 11 hours implementing all the required features and some of the op
 * All images fade in (optional)
 * For the large poster, load the low-res image first, switch to high-res when complete (optional)
 * Customize the navigation bar. (optional)
-
+* The app was only tested on iphone 4 and iphone 5. The table sizing is not looking correct on iphone 6. Need to use auto layout
 
 ## Installation
 The pods directory was also checked in so theoretically should just need to load RottenMovieController.xcworkspace
