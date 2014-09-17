@@ -100,7 +100,38 @@ class MoviesViewController: UITableViewController {
         cell.synopsisLabel.text = movie["synopsis"] as? String
         let posters = movie["posters"] as NSDictionary
         let posterURL = posters["thumbnail"] as String
-        cell.thumbnailView.setImageWithURL(NSURL(string:posterURL))
+        let request = NSURLRequest(URL: NSURL(string: posterURL))
+        let imageRequestFailure = {
+            (request : NSURLRequest!, response : NSHTTPURLResponse!, error : NSError!) -> Void in
+            if (error? != nil) {
+                let errorString = error.localizedDescription
+                
+                CSNotificationView.showInViewController(self, style: CSNotificationViewStyleError, message: errorString)
+                
+                
+                
+            }
+
+        }
+        
+        // do the fade in for the thumbnail images
+        
+        let imageRequestSuccess = {
+            (request : NSURLRequest!, response : NSHTTPURLResponse!, image : UIImage!) -> Void in
+            
+            cell.thumbnailView.alpha = 0.0;
+            cell.thumbnailView.image = image;
+            UIView.animateWithDuration(0.7, animations: { () -> Void in
+                cell.thumbnailView.alpha = 1.0
+            })
+  
+            
+        }
+        
+        cell.thumbnailView.setImageWithURLRequest(request, placeholderImage: nil, success: imageRequestSuccess, failure: imageRequestFailure)
+        
+        
+       
         return cell;
 
     }
